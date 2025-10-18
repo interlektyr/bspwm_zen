@@ -12,42 +12,80 @@ Xcursor.theme: Oxygen_White
 URxvt.font: xft:DepartureMono Nerd Font:style=Regular:antialias=true:size=11:minspace=False
 URxvt.boldFont: xft:DepartureMono Nerd Font:style=Bold:antialias=true:size=11:minspace=False
 
-! special
+! Everforest theme
 URxvt.foreground:   #c5c8c6
 URxvt.background:   #1D2021
-URxvt.cursorColor:  #f0c674
+URxvt.cursorColor:  #DBBC7F
 
 ! black
 URxvt.color0:       #373b41
 URxvt.color8:       #373b41
 
 ! red
-URxvt.color1:       #bf616a
-URxvt.color9:       #bf616a
+URxvt.color1:       #E67E80
+URxvt.color9:       #E67E80
 
 ! green
-URxvt.color2:       #a3be8c
-URxvt.color10:      #a3be8c
+URxvt.color2:       #A7C080
+URxvt.color10:      #A7C080
 
 ! yellow
-URxvt.color3:       #ebcb8b
-URxvt.color11:      #ebcb8b
+URxvt.color3:       #DBBC7F
+URxvt.color11:      #DBBC7F
 
 ! blue
-URxvt.color4:       #81a1c1
-URxvt.color12:      #81a1c1
+URxvt.color4:       #7FBBB3
+URxvt.color12:      #7FBBB3 
 
 ! magenta
-URxvt.color5:       #b294bb
-URxvt.color13:      #b294bb
+URxvt.color5:       #D699B6
+URxvt.color13:      #D699B6
 
 ! cyan
-URxvt.color6:       #88c0d0
-URxvt.color14:      #88c0d0
+URxvt.color6:       #7FBBB3 
+URxvt.color14:      #7FBBB3
 
 ! white
 URxvt.color7:       #c5c8c6
 URxvt.color15:      #c5c8c6
+
+! Nordtheme
+! special
+! URxvt.foreground:   #c5c8c6
+! URxvt.background:   #1D2021
+!URxvt.cursorColor:  #f0c674
+
+! black
+!URxvt.color0:       #373b41
+!URxvt.color8:       #373b41
+
+! red
+!URxvt.color1:       #bf616a
+!URxvt.color9:       #bf616a
+
+! green
+!URxvt.color2:       #a3be8c
+!URxvt.color10:      #a3be8c
+
+! yellow
+!URxvt.color3:       #ebcb8b
+!URxvt.color11:      #ebcb8b
+
+! blue
+!URxvt.color4:       #81a1c1
+!URxvt.color12:      #81a1c1
+
+! magenta
+!URxvt.color5:       #b294bb
+!URxvt.color13:      #b294bb
+
+! cyan
+!URxvt.color6:       #88c0d0
+!URxvt.color14:      #88c0d0
+
+! white
+!URxvt.color7:       #c5c8c6
+!URxvt.color15:      #c5c8c6
 
 URxvt.intensityStyles: false
 URxvt.scrollBar: false
