@@ -1,0 +1,87 @@
+#! /bin/bash
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
+xrandr -q | grep "DP-1-1 connected" && xrandr --output DP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-2 --off
+
+xrandr -q | grep "DP-1-1 connected" && bspc monitor %DP-1-1 -d 1 2 3 4 5 6 7 8 9
+xrandr -q | grep "DP-1-1 connected" || bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+xrandr -q | grep "DP-1-1 connected" && echo "Xft.dpi: 108" | xrdb -override
+xrandr -q | grep "DP-1-1 connected" || echo "Xft.dpi: 130" | xrdb -override
+
+pgrep -x sxhkd >/dev/null || sxhkd &
+
+export SXHKD_SHELL=/usr/bin/bash
+export PAGER=moore
+export VISUAL=neovide
+export EDITOR=neovide
+export RANGER_LOAD_DEFAULT_RC=false
+export _JAVA_AWT_WM_NONREPARENTING=1
+
+urxvtd -q &
+
+#./nonono_time.sh &
+
+touch /tmp/options.txt
+
+bspwm_hiddenwinmenu.sh init &
+
+#if [ $(xrandr -q | grep "DP-1-1 connected") ]; then
+
+#else
+
+#xrandr --output eDP-2 --primary --auto --output DP-1-1 --off
+#bspc monitor -d 1 2 3 4 5 6 7 8
+
+#fi
+
+bspc config border_width 0
+bspc config window_gap 12
+
+bspc config split_ratio 0.52
+bspc config borderless_monocle true
+bspc config gapless_monocle true
+
+bspc config click_to_focus true
+bspc config pointer_modifier mod4
+bspc config pointer_action1 move
+bspc config pointer_action3 resize_corner
+
+bspc rule -a '*' state=floating
+bspc rule -a urxvtc center=true rectangle=1000x800
+bspc rule -a Navigator center=true rectangle=1500x1200
+bspc rule -a Kitty center=true rectangle=1200x1000
+bspc rule -a Gimp desktop='^8' state=floating follow=on
+bspc rule -a Chromium desktop='^2'
+bspc rule -a mplayer2 state=floating
+bspc rule -a Kupfer.py focus=on
+bspc rule -a Screenkey manage=off
+bspc rule -a tint2 layer=top
+#bspc rule -a tint2 state=floating sticky
+
+xsetroot -cursor_name left_ptr
+
+xrandr -q | grep "DP-1-1 connected" && xsettingsd &
+xrandr -q | grep "DP-1-1 connected" || xsettingsd -c ~/.xsettingsd_laptopscr.conf &
+
+picom --config ~/picom.conf &
+
+/usr/bin/dunst &
+
+udiskie &
+
+#tint2 -c /home/kristian/.config/tint2/tintclock.tint2rc &
+#xrandr -q | grep "DP-1-1 connected" && tint2 -c /home/kristian/.config/tint2/status.tint2rc &
+#xrandr -q | grep "DP-1-1 connected" || tint2 -c /home/kristian/.config/tint2/status_laptopscr.tint2rc &
+
+./lemonbar.sh &
+xdo raise -N lemonbar &
+
+pamixer --set-volume 50 &
+
+bspwm_randwall.sh &
+
+slock &
