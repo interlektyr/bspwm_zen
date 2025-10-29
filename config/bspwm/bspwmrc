@@ -77,8 +77,8 @@ udiskie &
 #xrandr -q | grep "DP-1-1 connected" && tint2 -c /home/kristian/.config/tint2/status.tint2rc &
 #xrandr -q | grep "DP-1-1 connected" || tint2 -c /home/kristian/.config/tint2/status_laptopscr.tint2rc &
 
-./lemonbar.sh &
-xdo raise -N lemonbar &
+#./lemonbar.sh &
+# xdo raise -N lemonbar &
 
 pamixer --set-volume 50 &
 
