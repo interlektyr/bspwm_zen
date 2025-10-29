@@ -12,16 +12,16 @@ super + ctrl + p
 
 #Sound
 XF86AudioRaiseVolume
-    ./volbar.sh InV
+    ./bar_vol.sh InV
 
 XF86AudioLowerVolume
-    ./volbar.sh DeV
+    ./bar_vol.sh DeV
     
 super + ctrl + v
-    ./volbar.sh ShoV
+    ./bar_vol.sh ShoV
 
 XF86AudioMute
-    ./volbar.sh MutV
+    ./bar_vol.sh MutV
 
 #+5%
 # wpctl set-volume -l 1.5 49 5%+
@@ -40,12 +40,12 @@ super + Return
 	urxvtc
 
 # Clock
-#super + ctrl + Return
-#    ./launchtint2clock.sh
+super + ctrl + Return
+    ./bar_clock.sh
 
 # firefox
 super + f
-	firefox
+	firejail --apparmor firefox 
 
 # neovide
 super + n 
@@ -105,15 +105,15 @@ super + Down
 
 # focus the next/previous desktop in the current monitor
 super + {KP_Subtract,KP_Add}
-    bspwm_workspaces.sh {prev,next} ; ./notebar.sh s
+    bspwm_workspaces.sh {prev,next} ; ./bar_desk.sh s
 
 # jump to desktop
 super + {1-9}
-    bspwm_workspaces.sh jump {1-9} ; ./notebar.sh s
+    bspwm_workspaces.sh jump {1-9} ; ./bar_desk.sh s
     
 # show desktop
 super + ctrl + d
-    ./notebar.sh l
+    ./bar_desk.sh l
 
 
 # focus or send to the given desktop
@@ -130,8 +130,8 @@ super + Up
 
   # toggle beetwen floating & tiled
 super + ctrl + Left
-    bspc node -t "~"{floating,tiled}
-
+    bspc node -t "~"{floating,tiled} ; xdo raise -a clockbar
+ 
 # make sxhkd reload its configuration files:
 super + Escape
 	pkill -USR1 -x sxhkd
