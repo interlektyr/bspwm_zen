@@ -12,7 +12,7 @@ case $(cat /tmp/options.txt | gum filter --header="Power options") in
     slock;;
     "Shutdown")
     gum confirm && shutdown -h now || exit;;
-    "Exit to TTY")
+    "Reload X11")
     gum confirm && bspc quit || exit;;
     "Reboot")
     gum confirm && systemctl reboot || exit;;
