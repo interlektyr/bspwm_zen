@@ -21,9 +21,12 @@ fi
 echo "Internet: $con" > ~/options.txt
 echo "Firewall: $ufw (ufw)" >> ~/options.txt
 echo "VPN: $vpn (mullvad)" >> ~/options.txt
+echo "Bluetooth (bluetuith)" >> ~/options.txt
+echo "Start Torrents (tremc)" >> ~/options.txt
+echo "Stop Torrents (transmission-remote)" >> ~/options.txt
 echo "Cancel" >> ~/options.txt
 
-case $(cat ~/options.txt | gum filter --header="Network options") in
+case $(cat ~/options.txt | gum filter --header="Connections") in
     "Internet: $con")
     urxvtc -g 100x40 -e sh -c "nmtui"
     exit;;
@@ -32,6 +35,16 @@ case $(cat ~/options.txt | gum filter --header="Network options") in
     exit;;
     "VPN: $vpn (mullvad)")
     mullvad status;;
+    "Bluetooth (bluetuith)")
+    urxvtc -e sh -c "bluetuith"
+    exit;;
+    "Start Torrents (tremc)")
+    transmission-daemon;
+    urxvtc -e sh -c "tremc"
+    exit;;
+    "Stop Torrents (transmission-remote)")
+    transmission-remote --exit;
+    exit;;
     "Cancel")
     exit;;
     *)
