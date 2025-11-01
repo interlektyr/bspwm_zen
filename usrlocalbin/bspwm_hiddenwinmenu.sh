@@ -25,7 +25,7 @@ sleep 1
 exit
 fi
 
-v=$(gum filter --header "Windows" < /tmp/hwlist.txt | cut -d: -f1)
+v=$(gum filter --header "Hidden windows" < /tmp/hwlist.txt | cut -d: -f1)
 
 sel=$(sed -n "${v}p" < /tmp/hwidlist.txt)
 
