@@ -1,13 +1,13 @@
 #!/bin/bash
 
-echo "Lock" > /tmp/options.txt
-echo "Shutdown" >> /tmp/options.txt
-echo "Reload X11" >> /tmp/options.txt
-echo "Reboot" >> /tmp/options.txt
-echo "Reboot into firmware" >> /tmp/options.txt
-echo "Cancel" >> /tmp/options.txt
+echo "Lock" > /tmp/optionsP.txt
+echo "Shutdown" >> /tmp/optionsP.txt
+echo "Reload X11" >> /tmp/optionsP.txt
+echo "Reboot" >> /tmp/optionsP.txt
+echo "Reboot into firmware" >> /tmp/optionsP.txt
+echo "Cancel" >> /tmp/optionsP.txt
 
-case $(cat /tmp/options.txt | gum filter --header="Power options") in
+case $(cat /tmp/optionsP.txt | gum filter --header="Power options") in
     "Lock")
     slock;;
     "Shutdown")
