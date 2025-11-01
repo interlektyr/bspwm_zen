@@ -63,6 +63,11 @@ super + x
 super + z
 	zen-browser
 
+
+# help
+super + h
+    urxvtc -g 120x30 -e sh -c "gum pager < /$HOME/.config/sxhkd/sxhkdrc;exit"
+
 #
 # Menus
 #
