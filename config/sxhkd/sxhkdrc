@@ -77,7 +77,7 @@ super + Delete
 
 # Network menu
 super + i
-    urxvtc -g 45x11 -e sh -c "bspwm_network.sh;exit"
+    urxvtc -g 45x12 -e sh -c "bspwm_network.sh;exit"
 
 # Network menu
 super + s
@@ -85,7 +85,7 @@ super + s
 
 # Hidden windows
 super + h
-    urxvtc -g 45x11 -e sh -c "bspwm_hiddenwinmenu.sh;exit"
+    urxvtc -g 120x30 -e sh -c "bspwm_hiddenwinmenu.sh;exit"
 
 #
 # bspwm hotkeys
