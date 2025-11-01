@@ -26,6 +26,7 @@ urxvtd -q &
 #./nonono_time.sh &
 
 touch /tmp/optionsN.txt
+touch /tmp/optionsP.txt
 touch /tmp/options.txt
 
 bspwm_hiddenwinmenu.sh init &
