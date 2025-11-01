@@ -3,12 +3,12 @@
 #
 
 #BAT 
-super + ctrl + p 
+#super + ctrl + p 
    
 
 #BAT 
 super + ctrl + p 
-   ./batbar.sh  
+   ./bar_bat.sh  
 
 #Sound
 XF86AudioRaiseVolume
