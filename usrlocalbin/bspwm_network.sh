@@ -18,15 +18,15 @@ else
 vpn="OFF"
 fi
 
-echo "Internet: $con" > ~/options.txt
-echo "Firewall: $ufw (ufw)" >> ~/options.txt
-echo "VPN: $vpn (mullvad)" >> ~/options.txt
-echo "Bluetooth (bluetuith)" >> ~/options.txt
-echo "Start Torrents (tremc)" >> ~/options.txt
-echo "Stop Torrents (transmission-remote)" >> ~/options.txt
-echo "Cancel" >> ~/options.txt
+echo "Internet: $con" > /tmp/optionsN.txt
+echo "Firewall: $ufw (ufw)" >> /tmp/optionsN.txt
+echo "VPN: $vpn (mullvad)" >> /tmp/optionsN.txt
+echo "Bluetooth (bluetuith)" >> /tmp/optionsN.txt
+echo "Start Torrents (tremc)" >> /tmp/optionsN.txt
+echo "Stop Torrents (transmission-remote)" >> /tmp/optionsN.txt
+echo "Cancel" >> /tmp/optionsN.txt
 
-case $(cat ~/options.txt | gum filter --header="Connections") in
+case $(cat /tmp/optionsN.txt | gum filter --header="Connections") in
     "Internet: $con")
     urxvtc -g 100x40 -e sh -c "nmtui"
     exit;;
