@@ -29,6 +29,11 @@ bspc node --to-desktop "^${sendwc}"
 dunstify -i /$HOME/.config/bspwm/bspwm_logo.svg -h string:x-dunst-stack-tag:wc "Window was sent to Desktop $sendwc"
 }
 
+send_wc_follow () {
+bspc node --to-desktop "^${sendwcf}" --follow
+set_wc
+}
+
 case $1 in
     next)
     next_wc;;
@@ -40,6 +45,9 @@ case $1 in
     send)
     sendwc=$2
     send_wc;;
+    sendf)
+    sendwcf=$2
+    send_wc_follow;;
     *)
     exit;;
 esac
