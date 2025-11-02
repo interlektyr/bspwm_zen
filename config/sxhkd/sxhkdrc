@@ -83,7 +83,7 @@ super + @space
 
 # zen-browser
 super + z
-	zen-browser
+	zen-browser https://nimplex.github.io/Minimal-StartPage/
 
 # ranger
 super + r
