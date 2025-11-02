@@ -23,22 +23,16 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 urxvtd -q &
 
-#./nonono_time.sh &
-
 touch /tmp/optionsN.txt
 touch /tmp/optionsP.txt
 touch /tmp/options.txt
 
+mkdir /tmp/appcommander/
+touch /tmp/appcommander/AC_Exec.txt
+touch /tmp/appcommander/AC_Name.txt
+touch /tmp/appcommander/AC_Term.txt
+
 bspwm_hiddenwinmenu.sh init &
-
-#if [ $(xrandr -q | grep "DP-1-1 connected") ]; then
-
-#else
-
-#xrandr --output eDP-2 --primary --auto --output DP-1-1 --off
-#bspc monitor -d 1 2 3 4 5 6 7 8
-
-#fi
 
 bspc config border_width 0
 bspc config window_gap 12
@@ -62,7 +56,6 @@ bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a tint2 layer=top
-#bspc rule -a tint2 state=floating sticky
 
 xsetroot -cursor_name left_ptr
 
@@ -74,13 +67,6 @@ picom --config ~/picom.conf &
 /usr/bin/dunst &
 
 udiskie &
-
-#tint2 -c /home/kristian/.config/tint2/tintclock.tint2rc &
-#xrandr -q | grep "DP-1-1 connected" && tint2 -c /home/kristian/.config/tint2/status.tint2rc &
-#xrandr -q | grep "DP-1-1 connected" || tint2 -c /home/kristian/.config/tint2/status_laptopscr.tint2rc &
-
-#./lemonbar.sh &
-# xdo raise -N lemonbar &
 
 pamixer --set-volume 50 &
 
