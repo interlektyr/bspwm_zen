@@ -1,28 +1,46 @@
 #!/bin/bash
 
-init_ac() {
-touch /tmp/ac_applist.txt
-exit
-}
-
-main_ac() {
-truncate -s 0 /tmp/ac_applist.txt
+truncate -s 0 /tmp/appcommander/AC_Exec.txt
+truncate -s 0 /tmp/appcommander/AC_Name.txt
+truncate -s 0 /tmp/appcommander/AC_Term.txt
 truncate -s 0 ~/nohup.out
+x=0
 
-ls -p /usr/share/applications | grep -v / | sed 's/\.[^.]*$//' > /tmp/ac_applist.txt
+for entry in $(find /usr/share/applications -name "*.desktop"); do
+  x=$((x + 1))
+  echo "$entry" >>/tmp/appcommander/AC_Exec.txt
+  echo "$x: $(grep -m 1 '^Name=' $entry | head -1 | cut -d= -f2)" >>/tmp/appcommander/AC_Name.txt
+  hterm=$(grep '^Terminal=' $entry | head -1 | cut -d= -f2)
 
-sel="$(gum filter < /tmp/ac_applist.txt).desktop"
+  if [ "$hterm" = "true" ]; then
 
-nohup dex /usr/share/applications/$sel > /dev/null 2>&1
+    termex=$(grep -m 1 '^Exec=' $entry | head -1 | cut -d= -f2)
+    echo $termex >>/tmp/appcommander/AC_Term.txt
 
-exit 0
+  else
 
-}
+    echo $hterm >>/tmp/appcommander/AC_Term.txt
 
-case $1 in
-    init)
-    init_ac;;
-    *)
-    main_ac;;
-esac
+  fi
 
+done
+
+v=$(gum filter --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt | cut -d: -f1)
+
+checkterm=$(sed -n "${v}p" </tmp/appcommander/AC_Term.txt)
+
+if [ "$checkterm" = "false" ]; then
+
+  sel=$(sed -n "${v}p" </tmp/appcommander/AC_Exec.txt)
+
+  nohup dex $sel >/dev/null 2>&1
+
+  exit 0
+
+else
+
+  nohup urxvtc -g 150x50 -e sh -c "$checkterm;exit"
+
+  exit 0
+
+fi
