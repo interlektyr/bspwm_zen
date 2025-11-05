@@ -8,7 +8,7 @@ chad=$(acpi -a | cut -d: -f2)
 if [ $chad = "on-line" ]; then
 
   __batbar() {
-    echo -e -n "%{c}AC$(acpi --battery | cut -d, -f2 | tr -d ' ')"
+    echo -e -n "%{c}AC:$(acpi --battery | cut -d, -f2 | tr -d ' ')"
     sleep 3s
   }
 
@@ -27,7 +27,7 @@ if [ $chad = "on-line" ]; then
 else
 
   __batbar() {
-    echo -e -n "%{c}BAT$(acpi --battery | cut -d, -f2 | tr -d ' ')"
+    echo -e -n "%{c}BAT:$(acpi --battery | cut -d, -f2 | tr -d ' ')"
     sleep 3s
   }
 
@@ -45,4 +45,4 @@ else
 
 fi
 
-__batbar | lemonbar -b -d -g ${geom} -F#1d2021 -B${barbcolor} -o 0 -f "DepartureMonoNerdFont-16" >/dev/null 2>&1
+__batbar | lemonbar -b -d -g ${geom} -F#1d2021 -B${barbcolor} -o 0 -f "DepartureMonoNerdFont-12" >/dev/null 2>&1

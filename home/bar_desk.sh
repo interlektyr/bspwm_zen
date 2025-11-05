@@ -15,5 +15,5 @@ lemondesk() {
   sleep 1
 }
 
-lemondesk | lemonbar -b -d -g 200x50+10+10 -F#1d2021 -B#ebbcba -o 0 -f "DepartureMonoNerdFont-16" >/dev/null 2>&1
+lemondesk | lemonbar -b -d -g 180x50+10+10 -F#1d2021 -B#ebbcba -o 0 -f "DepartureMonoNerdFont-12" >/dev/null 2>&1
 #118

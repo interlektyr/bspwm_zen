@@ -8,4 +8,4 @@ clockbar() {
 
 }
 
-clockbar | lemonbar -n clockbar -b -d -g 135x50+10+10 -F#1d2021 -B#D3C6AA -o 0 -f "DepartureMonoNerdFont-18" >/dev/null 2>&1
+clockbar | lemonbar -n clockbar -b -d -g 135x50+10+10 -F#1d2021 -B#D3C6AA -o 0 -f "DepartureMonoNerdFont-16" >/dev/null 2>&1

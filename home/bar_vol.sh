@@ -31,12 +31,12 @@ BarOut() {
     }
   else
     BarString() {
-      echo -e -n "%{c}VOL$(pamixer --get-volume-human)"
+      echo -e -n "%{c}VOL:$(pamixer --get-volume-human)"
       sleep $SLen
     }
   fi
 
-  BarString | lemonbar -b -d -g 147x50+10+10 -F#1d2021 -B#83C092 -o 0 -f "DepartureMonoNerdFont-16" >/dev/null 2>&1
+  BarString | lemonbar -b -d -g 147x50+10+10 -F#1d2021 -B#83C092 -o 0 -f "DepartureMonoNerdFont-12" >/dev/null 2>&1
 }
 
 "$@"
