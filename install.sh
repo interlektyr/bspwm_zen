@@ -180,6 +180,10 @@ fi
 
 cd usrshareicons/
 sudo cp -r Oxygen_White/ /usr/share/icons/
+cd ..
+
+echo "Copying wallpapers..."
+cp -r Bilder ~/
 cd
 
 echo "Base configuration is done!"
