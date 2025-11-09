@@ -55,7 +55,7 @@ esac
 
 echo "Specify monitor setup:"
 echo "  1) 1 monitor"
-echo "  2) interlektyr's default setup"
+echo "  2) interlektyr's default laptop setup"
 
 read nc
 
@@ -124,18 +124,62 @@ cd bspwm_zen
 mkdir ~/.config/bspwm/
 
 if [ "$MonT" = "1" ]; then
-  cd one_monitor
+  cd one_monitor/
   chmod +x bspwmrc
   cp bspwmrc ~/.config/bspwm/
   cd ..
-  cd config
-  cd bspwm
+  cd config/bspwm/
   cp bspwm_logo.svg ~/.config/bspwm/
   cd ..
 else
-  cd config
-  cd bspwm
+  cd config/bspwm/
   chmod +x bspwmrc
   cd ..
   cp -r bspwm ~/.config/
 fi
+
+if [ "$CO" = "yes" ]; then
+  cp -r alacritty ~/.config/
+fi
+
+cp -r dunst gtk-3.0 nvim ranger sxhkd ~/.config/
+cd ..
+
+cd home/
+cp .xinitrc .Xresources .xsettingsd.conf picom.conf ~/
+cd ..
+
+cd localshare/icons/
+mkdir ~/.local/share/icons/default/
+cp index.theme ~/.local/share/icons/default/
+cd ..
+cd ..
+
+cd usrlocalbin/
+chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh
+sudo cp appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh /usr/local/bin/
+
+if [ "$ComT" = "ASUS" ] || [ "$ComT" = "L" ]; then
+  sudo cp bar_bat.sh bar_batdeamon.sh /usr/local/bin/
+fi
+
+cd ..
+
+confdirc="/usr/share/fonts/TTF/"
+
+if [ ! -d "$confdirc" ]; then
+  cd usrsharefonts/
+  sudo cp -r TTF /usr/share/fonts/
+  cd ..
+else
+  cd usrsharefonts/TTF/
+  sudo cp -r DepartureMonoNerdFontMono-Regular.otf DepartureMonoNerdFontPropo-Regular.otf DepartureMonoNerdFont-Regular.otf /usr/share/fonts/TTF/
+  cd ..
+  cd ..
+fi
+
+cd usrshareicons/
+sudo cp -r Oxygen_White/ /usr/share/icons/
+cd
+
+echo "Base configuration is done!"
