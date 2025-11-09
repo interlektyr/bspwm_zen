@@ -55,15 +55,15 @@ super + m
 
 # focus the next/previous desktop in the current monitor
 super + ctrl + {Left,Right}
-    bspwm_workspaces.sh {prev,next} ; ./bar_desk.sh s
+    bspwm_workspaces.sh {prev,next} ; bar_desk.sh s
 
 # jump to desktop
 super + {1-9}
-    bspwm_workspaces.sh jump {1-9} ; ./bar_desk.sh s
+    bspwm_workspaces.sh jump {1-9} ; bar_desk.sh s
 
 # send window to the given desktop and follow it
 super + ctrl + {1-9}
-    bspwm_workspaces.sh sendf {1-9} ; ./bar_desk.sh s
+    bspwm_workspaces.sh sendf {1-9} ; bar_desk.sh s
 
 # send window to the given desktop and stay on the current
 super + alt + {1-9}
@@ -133,28 +133,28 @@ super + h
 
 # Time 
 super + ctrl + Return
-    ./bar_clock.sh
+    bar_clock.sh
 
 # Current desktop
 super + ctrl + d
-    ./bar_desk.sh l
+    bar_desk.sh l
 
 # Volume 
 XF86AudioRaiseVolume
-    ./bar_vol.sh InV
+    bar_vol.sh InV
 
 XF86AudioLowerVolume
-    ./bar_vol.sh DeV
+    bar_vol.sh DeV
     
 super + ctrl + v
-    ./bar_vol.sh ShoV
+    bar_vol.sh ShoV
 
 XF86AudioMute
-    ./bar_vol.sh MutV
+    bar_vol.sh MutV
 
 # Battery  
 super + ctrl + p 
-   ./bar_bat.sh
+   bar_bat.sh
 
 ######################################
 # OTHER  
