@@ -100,8 +100,11 @@ super + ctrl + h
 # alternatives
 
 # firefox
-super + f
+super + ctrl + f
 	firejail --apparmor firefox
+
+super + f 
+  firefox
 
 # gedit
 super + x
