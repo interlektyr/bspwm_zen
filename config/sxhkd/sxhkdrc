@@ -101,7 +101,7 @@ super + ctrl + h
 
 # firefox
 super + ctrl + f
-	firejail --apparmor firefox
+	firejail firefox
 
 super + f 
   firefox
