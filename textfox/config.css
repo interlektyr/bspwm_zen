@@ -1,0 +1,5 @@
+/* path: chrome/config.css */
+:root {
+  --tf-font-family: "DepartureMono Nerd Font", Consolas, monospace;
+  --tf-display-horizontal-tabs: block;
+}
