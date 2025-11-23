@@ -62,11 +62,9 @@ read nc
 case $nc in
 "1")
   MonT="1"
-  break
   ;;
 "2")
   MonT="2"
-  break
   ;;
 *)
   echo "Invalid option! Quitting..."
@@ -75,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxkhd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli
+sudo pacman -Syu thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # If not CachyOS
 if [ "$CO" = "no" ]; then
@@ -98,7 +96,7 @@ if [ "$ComT" = "ASUS" ]; then
 fi
 
 # install from the aur
-paru -S rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git asusctl tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin
+paru -S rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
 
 # check if /$HOME/.config/ exit, if it dosen't create it
 confdir="~/.config/"
@@ -142,6 +140,8 @@ if [ "$CO" = "yes" ]; then
   cp -r alacritty ~/.config/
 fi
 
+chmod +x ranger/scope.sh
+
 cp -r dunst gtk-3.0 nvim ranger sxhkd ~/.config/
 cd ..
 
@@ -150,13 +150,14 @@ cp .xinitrc .Xresources .xsettingsd.conf picom.conf ~/
 cd ..
 
 cd localshare/icons/
+mkdir ~/.local/share/icons/
 mkdir ~/.local/share/icons/default/
 cp index.theme ~/.local/share/icons/default/
 cd ..
 cd ..
 
 cd usrlocalbin/
-chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh
+chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh
 sudo cp appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh /usr/local/bin/
 
 if [ "$ComT" = "ASUS" ] || [ "$ComT" = "L" ]; then
