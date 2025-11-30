@@ -96,7 +96,7 @@ if [ "$ComT" = "ASUS" ]; then
 fi
 
 # install from the aur
-paru -S tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
+paru -S moonbit tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
 
 # check if /$HOME/.config/ exit, if it dosen't create it
 confdir="~/.config/"
