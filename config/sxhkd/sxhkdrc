@@ -73,9 +73,13 @@ super + alt + {1-9}
 # BASIC APPS
 ######################################
 
-# terminal emulator
+# spawn terminal as a scratchpad (using tdrop)
 super + Return
-	urxvtc
+	tdrop -w 50% -h 50% -x 25% -y 25% urxvtc
+
+# spawn terminal in stand-alone window
+alt + Return
+  urxvtc -bg '#272E33' -cr '#83C092'
 
 # custom launcher script
 super + @space
