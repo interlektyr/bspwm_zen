@@ -77,6 +77,7 @@ else
 fi
 
 echo "Manage snapshots" >> ~/options.txt
+echo "Clean up system" >> ~/options.txt
 echo "CachyOS Hello" >> ~/options.txt
 echo "Monitor system" >> ~/options.txt
 echo "Cancel" >> ~/options.txt
@@ -86,6 +87,10 @@ case $(cat ~/options.txt | gum filter --header="System") in
     update_sys;;
     "Manage snapshots")
     urxvtc -e sh -c "sudo btrfs-assistant" 
+    exit
+    ;;
+    "Clean up system")
+    urxvtc -e sh -c "moonbit"
     exit
     ;;
     "CachyOS Hello")
