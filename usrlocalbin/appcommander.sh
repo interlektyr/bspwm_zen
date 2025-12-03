@@ -4,34 +4,37 @@ truncate -s 0 /tmp/appcommander/AC_Exec.txt
 truncate -s 0 /tmp/appcommander/AC_Name.txt
 truncate -s 0 /tmp/appcommander/AC_Term.txt
 truncate -s 0 ~/nohup.out
-x=0
 
 for entry in $(find /usr/share/applications -name "*.desktop"); do
-  x=$((x + 1))
+  onlyname=$(echo $entry | cut -d/ -f5)
   echo "$entry" >>/tmp/appcommander/AC_Exec.txt
-  echo "$x: $(grep -m 1 '^Name=' $entry | head -1 | cut -d= -f2)" >>/tmp/appcommander/AC_Name.txt
+  nameApp=$(grep -m 1 '^Name=' $entry | head -1 | cut -d= -f2)
+
+  if grep -qwF "$nameApp" "/tmp/appcommander/AC_Name.txt"; then
+    echo "$nameApp ($onlyname)" >>/tmp/appcommander/AC_Name.txt
+  else
+    echo "$nameApp" >>/tmp/appcommander/AC_Name.txt
+  fi
+
   hterm=$(grep '^Terminal=' $entry | head -1 | cut -d= -f2)
 
   if [ "$hterm" = "true" ]; then
-
-    termex=$(grep -m 1 '^Exec=' $entry | head -1 | cut -d= -f2)
-    echo $termex >>/tmp/appcommander/AC_Term.txt
-
+    echo "$(grep -m 1 '^Exec=' $entry | head -1 | cut -d= -f2)" >>/tmp/appcommander/AC_Term.txt
   else
-
-    echo $hterm >>/tmp/appcommander/AC_Term.txt
-
+    echo "false" >>/tmp/appcommander/AC_Term.txt
   fi
 
 done
 
-v=$(gum filter --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt | cut -d: -f1)
+v=$(gum filter --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt)
 
-checkterm=$(sed -n "${v}p" </tmp/appcommander/AC_Term.txt)
+lineNum=$(grep -n "$v" "/tmp/appcommander/AC_Name.txt" | cut -d: -f1)
+
+checkterm=$(sed -n "${lineNum}p" </tmp/appcommander/AC_Term.txt)
 
 if [ "$checkterm" = "false" ]; then
 
-  sel=$(sed -n "${v}p" </tmp/appcommander/AC_Exec.txt)
+  sel=$(sed -n "${lineNum}p" </tmp/appcommander/AC_Exec.txt)
 
   nohup dex $sel >/dev/null 2>&1
 
