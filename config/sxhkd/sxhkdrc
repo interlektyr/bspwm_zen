@@ -39,10 +39,10 @@ super + Up
 
  # toggle beetwen floating & tiled
 super + ctrl + Up
-    bspc node -t "~"{floating,tiled}
+    bspwm_layouts.sh 
 
 # in tiled mode, swap the current node and the biggest window
-super + ctrl + space
+super + ctrl + b 
 	bspc node -s biggest.window
 
 # in tiled mode, alternate between the tiled and monocle layout
@@ -73,13 +73,13 @@ super + alt + {1-9}
 # BASIC APPS
 ######################################
 
-# spawn terminal as a scratchpad (using tdrop)
-super + Return
-	tdrop -w 50% -h 50% -x 25% -y 25% urxvtc
-
-# spawn terminal in stand-alone window
+# terminal emulator
 alt + Return
-  urxvtc -bg '#272E33' -cr '#83C092'
+	urxvtc
+
+# drop down terminal beta
+super + Return 
+    tdrop -w 50% -h 50% -x 25% -y 25% urxvt
 
 # custom launcher script
 super + @space
@@ -130,9 +130,21 @@ super + i
 super + s
     urxvtc -g 45x11 -e sh -c "bspwm_system.sh;exit"
 
+# List windos mapped on current desktop
+super + ctrl + @space
+    urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh otd;exit"
+
+# List all mapped windows 
+super + ctrl + w 
+   urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh;exit"
+
 # Hidden windows
 super + h
     urxvtc -g 120x30 -e sh -c "bspwm_hiddenwinmenu.sh;exit"
+
+# Eject mounted drives
+super + ctrl + e
+    urxvtc -g 80x12 -e sh -c "bspwm_eject.sh;exit"
 
 ######################################
 # LEMONBARS 
