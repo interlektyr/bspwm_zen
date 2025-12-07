@@ -1,13 +1,46 @@
-#! /bin/sh
+#! /bin/bash
+
+bspc config remove_disabled_monitors true
+bspc config remove_unplugged_monitors true
+bspc config merge_overlapping_monitors true
+
+#xrandr -q | grep "DP-1-1 connected" && xrandr --output DP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-2 --off
+
+#xrandr -q | grep "DP-1-1 connected" && bspc monitor %DP-1-1 -d 1 2 3 4 5 6 7 8 9
+#xrandr -q | grep "DP-1-1 connected" || bspc monitor -d 1 2 3 4 5 6 7 8 9
+
+#xrandr -q | grep "DP-1-1 connected" && echo "Xft.dpi: 108" | xrdb -override
+#xrandr -q | grep "DP-1-1 connected" || echo "Xft.dpi: 130" | xrdb -override
+
+#xrandr -q | grep "DP-1-1 connected" && touch /tmp/external_m.txt || touch /tmp/internal_m.txt
+
+if [ -z $(xrandr -q | grep "DP-1-1 connected") ]; then
+  bspc monitor -d 1 2 3 4 5 6 7 8 9
+  echo "Xft.dpi: 130" | xrdb -override
+  touch /tmp/internal_m.txt
+  tmt="/tmp/internal_m.txt"
+else
+  xrandr --output DP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-2 --off
+  bspc monitor %DP-1-1 -d 1 2 3 4 5 6 7 8 9
+  echo "Xft.dpi: 108" | xrdb -override
+  touch /tmp/external_m.txt
+  tmt="/tmp/external_m.txt"
+fi
+
+reft=0
+while [ "$reft" -lt 10 ]; do
+  echo "float" >>$tmt
+  reft=$((reft + 1))
+done
 
 pgrep -x sxhkd >/dev/null || sxhkd &
 
 export SXHKD_SHELL=/usr/bin/bash
 export PAGER=moore
-export RANGER_LOAD_DEFAULT_RC=false
-export _JAVA_AWT_WM_NONREPARENTING=1
 export VISUAL=neovide
 export EDITOR=neovide
+export RANGER_LOAD_DEFAULT_RC=false
+export _JAVA_AWT_WM_NONREPARENTING=1
 
 urxvtd -q &
 
@@ -22,14 +55,13 @@ touch /tmp/appcommander/AC_Term.txt
 
 bspwm_hiddenwinmenu.sh init &
 
-bspc monitor -d 1 2 3 4 5 6 7 8 9
-
 bspc config border_width 0
 bspc config window_gap 12
 
-bspc config split_ratio 0.52
+bspc config split_ratio 0.50
 bspc config borderless_monocle true
 bspc config gapless_monocle true
+bspc config automatic_scheme longest_side
 
 bspc config click_to_focus true
 bspc config pointer_modifier mod4
@@ -38,16 +70,21 @@ bspc config pointer_action3 resize_corner
 
 bspc rule -a '*' state=floating
 bspc rule -a urxvtc center=true rectangle=1000x800
+bspc rule -a Navigator center=true rectangle=1500x1200
 bspc rule -a Kitty center=true rectangle=1200x1000
 bspc rule -a Gimp desktop='^8' state=floating follow=on
 bspc rule -a Chromium desktop='^2'
 bspc rule -a mplayer2 state=floating
 bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
+bspc rule -a tint2 layer=top
+
+bspc config external_rules_command ${HOME}/.config/bspwm/external_rules.sh
 
 xsetroot -cursor_name left_ptr
 
-xsettingsd &
+xrandr -q | grep "DP-1-1 connected" && xsettingsd &
+xrandr -q | grep "DP-1-1 connected" || xsettingsd -c ~/.xsettingsd_laptopscr.conf &
 
 picom --config ~/picom.conf &
 
@@ -58,3 +95,5 @@ udiskie &
 pamixer --set-volume 50 &
 
 bspwm_randwall.sh &
+
+slock &
