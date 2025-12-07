@@ -127,11 +127,12 @@ if [ "$MonT" = "1" ]; then
   cp bspwmrc ~/.config/bspwm/
   cd ..
   cd config/bspwm/
-  cp bspwm_logo.svg ~/.config/bspwm/
+  chmod +x external_rules.sh
+  cp bspwm_logo.svg external_rules.sh ~/.config/bspwm/
   cd ..
 else
   cd config/bspwm/
-  chmod +x bspwmrc
+  chmod +x bspwmrc external_rules.sh
   cd ..
   cp -r bspwm ~/.config/
 fi
@@ -157,8 +158,8 @@ cd ..
 cd ..
 
 cd usrlocalbin/
-chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh
-sudo cp appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh /usr/local/bin/
+chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh
+sudo cp appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh /usr/local/bin/
 
 if [ "$ComT" = "ASUS" ] || [ "$ComT" = "L" ]; then
   sudo cp bar_bat.sh bar_batdeamon.sh /usr/local/bin/
