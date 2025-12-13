@@ -128,7 +128,7 @@ if [ "$MonT" = "1" ]; then
   cd ..
   cd config/bspwm/
   chmod +x external_rules.sh
-  cp bspwm_logo.svg external_rules.sh ~/.config/bspwm/
+  cp bspwm_logo.svg external_rules.sh bspwm_exceptions.txt ~/.config/bspwm/
   cd ..
 else
   cd config/bspwm/
