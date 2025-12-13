@@ -26,7 +26,7 @@ for entry in $(find /usr/share/applications -name "*.desktop"); do
 
 done
 
-v=$(gum filter --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt)
+v=$(gum filter --indicator.foreground="#A7C080" --match.foreground="#A7C080" --header.foreground="#DBBC7F" --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt)
 
 lineNum=$(grep -n "$v" "/tmp/appcommander/AC_Name.txt" | cut -d: -f1)
 
