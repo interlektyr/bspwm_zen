@@ -1,0 +1,6 @@
+appcommander.sh
+bspwm_hiddenwinmenu.sh 
+bspwm_network.sh 
+bspwm_powergmenu.sh 
+bspwm_system.sh  
+
