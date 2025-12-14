@@ -5,6 +5,10 @@ truncate -s 0 /tmp/appcommander/AC_Name.txt
 truncate -s 0 /tmp/appcommander/AC_Term.txt
 truncate -s 0 ~/nohup.out
 
+echo "AppCommander custum launcher script (close)" >>/tmp/appcommander/AC_Name.txt
+echo "null" >>/tmp/appcommander/AC_Exec.txt
+echo "exit" >>/tmp/appcommander/AC_Term.txt
+
 for entry in $(find /usr/share/applications -name "*.desktop"); do
   onlyname=$(echo $entry | cut -d/ -f5)
   echo "$entry" >>/tmp/appcommander/AC_Exec.txt
@@ -26,7 +30,7 @@ for entry in $(find /usr/share/applications -name "*.desktop"); do
 
 done
 
-v=$(cat /tmp/appcommander/AC_Name.txt | fzf --border --border-label=" AppCommander custom launcher script " --color=label:italic:yellow)
+v=$(cat /tmp/appcommander/AC_Name.txt | fzf --border --border-label=" AppCommander custom launcher script " --color=label:italic:yellow --color=border:'#1D2021')
 
 #v=$(gum filter --header "AppCommander custom launcher script" </tmp/appcommander/AC_Name.txt)
 
@@ -39,6 +43,10 @@ if [ "$checkterm" = "false" ]; then
   sel=$(sed -n "${lineNum}p" </tmp/appcommander/AC_Exec.txt)
 
   nohup dex $sel >/dev/null 2>&1
+
+  exit 0
+
+else if [ "$checkterm" = "exit" ]; then
 
   exit 0
 
