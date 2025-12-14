@@ -77,7 +77,7 @@ sudo pacman -Syu thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g g
 
 # If not CachyOS
 if [ "$CO" = "no" ]; then
-  sudo pacman -S fish ufw
+  sudo pacman -S fish ufw fzf
   sudo pacman -S --needed base-devel
   git clone https://aur.archlinux.org/paru.git
   cd paru
