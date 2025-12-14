@@ -50,7 +50,7 @@ else
   fi
 fi
 
-echo " enter install  shift multi-select  $up_line  esc exit" >/$HOME/.config/bspwm/bspwm_applist.txt
+echo "enter install | shift multi-select | $up_line | esc exit" >/$HOME/.config/bspwm/bspwm_applist.txt
 
 pacman -Sl $(pacman-conf --repo-list) >>/$HOME/.config/bspwm/bspwm_applist.txt
 
@@ -65,3 +65,4 @@ for appn in $(cat /tmp/pepperlist.txt); do
 done
 
 paru -S $final
+appcommander.sh u
