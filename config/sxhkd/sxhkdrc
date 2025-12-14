@@ -130,7 +130,7 @@ super + i
 
 # System
 super + s
-    urxvtc -g 45x11 -e sh -c "bspwm_system.sh;exit"
+    urxvtc -g 60x10 -e sh -c "bspwm_system.sh;exit"
 
 # List windos mapped on current desktop
 super + ctrl + @space
