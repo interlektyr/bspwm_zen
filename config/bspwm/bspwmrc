@@ -55,6 +55,8 @@ touch /tmp/appcommander/AC_Term.txt
 
 bspwm_hiddenwinmenu.sh init &
 
+appcommander.sh u &
+
 bspc config border_width 0
 bspc config window_gap 12
 
