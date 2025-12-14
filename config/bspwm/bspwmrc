@@ -53,6 +53,8 @@ touch /tmp/appcommander/AC_Exec.txt
 touch /tmp/appcommander/AC_Name.txt
 touch /tmp/appcommander/AC_Term.txt
 
+touch /tmp/pepperlist.txt
+
 bspwm_hiddenwinmenu.sh init &
 
 appcommander.sh u &
