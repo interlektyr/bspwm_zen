@@ -148,6 +148,11 @@ super + h
 super + ctrl + e
     urxvtc -g 80x12 -e sh -c "bspwm_eject.sh;exit"
 
+# Pepper - helper script for pacman/paru 
+super + alt + @space
+    urxvtc -g 120x30 -e sh -c "bspwm_pepper.sh;exit"
+
+
 ######################################
 # LEMONBARS 
 ######################################
