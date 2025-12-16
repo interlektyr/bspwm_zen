@@ -37,7 +37,7 @@ main() {
 
   truncate -s 0 ~/nohup.out
 
-  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green)
+  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line)
 
   lineNum=$(grep -n "$v" "/tmp/appcommander/AC_Name.txt" | cut -d: -f1)
 

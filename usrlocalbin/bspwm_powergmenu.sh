@@ -7,7 +7,7 @@ echo "Reload X11" >>/tmp/optionsP.txt
 echo "Reboot" >>/tmp/optionsP.txt
 echo "Reboot into firmware" >>/tmp/optionsP.txt
 
-case $(cat /tmp/optionsP.txt | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="Power" --color=footer:italic:yellow) in
+case $(cat /tmp/optionsP.txt | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="Power" --color=footer:italic:yellow --header-border=line --footer-border=line) in
 "Lock")
   slock
   ;;
