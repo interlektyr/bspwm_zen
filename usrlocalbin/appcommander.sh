@@ -6,7 +6,7 @@ update() {
   truncate -s 0 /tmp/appcommander/AC_Name.txt
   truncate -s 0 /tmp/appcommander/AC_Term.txt
 
-  echo "ENTER:pick ESC:quit" >>/tmp/appcommander/AC_Name.txt
+  echo " enter launch  esc quit" >>/tmp/appcommander/AC_Name.txt
   echo "null" >>/tmp/appcommander/AC_Exec.txt
   echo "null" >>/tmp/appcommander/AC_Term.txt
 
@@ -37,7 +37,7 @@ main() {
 
   truncate -s 0 ~/nohup.out
 
-  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --layout=reverse-list --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green)
+  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green)
 
   lineNum=$(grep -n "$v" "/tmp/appcommander/AC_Name.txt" | cut -d: -f1)
 
