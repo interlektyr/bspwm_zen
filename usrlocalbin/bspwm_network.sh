@@ -1,52 +1,52 @@
 #!/bin/sh
 
-if [ "$(curl -Is  http://www.google.com | head -n 1 | grep OK)" ]; then
-con="Connected"
+if [ "$(curl -Is http://www.google.com | head -n 1 | grep OK)" ]; then
+  con="Connected"
 else
-con="Disconected"
+  con="Disconected"
 fi
 
 if [ "$(cat /etc/ufw/ufw.conf | grep ENABLED=yes)" = "ENABLED=yes" ]; then
-ufw="UP"
+  ufw="UP"
 else
-ufw="DOWN"
+  ufw="DOWN"
 fi
 
 if [ "$(mullvad status | grep Connected)" ]; then
-vpn="ON"
+  vpn="ON"
 else
-vpn="OFF"
+  vpn="OFF"
 fi
 
-echo "Internet: $con" > /tmp/optionsN.txt
-echo "Firewall: $ufw (ufw)" >> /tmp/optionsN.txt
-echo "VPN: $vpn (mullvad)" >> /tmp/optionsN.txt
-echo "Bluetooth (bluetuith)" >> /tmp/optionsN.txt
-echo "Start Torrents (tremc)" >> /tmp/optionsN.txt
-echo "Stop Torrents (transmission-remote)" >> /tmp/optionsN.txt
-echo "Cancel" >> /tmp/optionsN.txt
-
-case $(cat /tmp/optionsN.txt | gum filter --header="Connections") in
-    "Internet: $con")
-    urxvtc -g 100x40 -e sh -c "nmtui"
-    exit;;
-    "Firewall: $ufw (ufw)")
-    urxvtc -g 120x24 -e sh -c "sudo tufw"
-    exit;;
-    "VPN: $vpn (mullvad)")
-    mullvad status;;
-    "Bluetooth (bluetuith)")
-    urxvtc -e sh -c "bluetuith"
-    exit;;
-    "Start Torrents (tremc)")
-    transmission-daemon;
-    urxvtc -e sh -c "tremc"
-    exit;;
-    "Stop Torrents (transmission-remote)")
-    transmission-remote --exit;
-    exit;;
-    "Cancel")
-    exit;;
-    *)
-    exit;;
+case $(echo -e "enter select  esc exit\nInternet: ($con)\nFirewall: ($ufw)\nVPN: ($vpn)\nBluetooth\nStart torrent-client\nStop torrent-client" | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="Connections" --color=footer:italic:yellow --header-border=line --footer-border=line) in
+"Internet: ($con)")
+  urxvtc -g 100x40 -e sh -c "nmtui"
+  exit
+  ;;
+"Firewall: ($ufw)")
+  urxvtc -g 120x24 -e sh -c "sudo tufw"
+  exit
+  ;;
+"VPN: ($vpn)")
+  mullvad status
+  ;;
+"Bluetooth")
+  urxvtc -e sh -c "bluetuith"
+  exit
+  ;;
+"Start torrent-client")
+  transmission-daemon
+  urxvtc -e sh -c "tremc"
+  exit
+  ;;
+"Stop torrent-client")
+  transmission-remote --exit
+  exit
+  ;;
+"Cancel")
+  exit
+  ;;
+*)
+  exit
+  ;;
 esac

@@ -1,21 +1,14 @@
 #!/bin/bash
 
-echo " enter select  esc exit" >/tmp/optionsP.txt
-echo "Lock" >>/tmp/optionsP.txt
-echo "Shutdown" >>/tmp/optionsP.txt
-echo "Reload X11" >>/tmp/optionsP.txt
-echo "Reboot" >>/tmp/optionsP.txt
-echo "Reboot into firmware" >>/tmp/optionsP.txt
-
-case $(cat /tmp/optionsP.txt | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="Power" --color=footer:italic:yellow --header-border=line --footer-border=line) in
+case $(echo -e "enter select  esc exit\nLock\nShutdown\nReload X11\nReboot\nReboot into firmware" | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="Power" --color=footer:italic:yellow --header-border=line --footer-border=line) in
 "Lock")
   slock
   ;;
 "Shutdown")
-  urxvtc -g 45x5 -e sh -c "gum confirm --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && shutdown -h now || exit"
+  urxvtc -g 45x5 -e sh -c "gum confirm Shutdown? --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && shutdown -h now || exit"
   ;;
 "Reload X11")
-  urxvtc -g 45x5 -e sh -c "gum confirm --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && bspc quit || exit"
+  urxvtc -g 45x5 -e sh -c "gum confirm Reload X11? --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && bspc quit || exit"
   ;;
 "Reboot")
   urxvtc -g 45x5 -e sh -c "gum confirm --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && systemctl reboot || exit"

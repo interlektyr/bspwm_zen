@@ -1,13 +1,6 @@
 #!/bin/sh
 
-echo " enter select  esc exit" >~/options.txt
-echo "Manage snapshots" >>~/options.txt
-echo "Clean up system" >>~/options.txt
-echo "CachyOS Hello" >>~/options.txt
-echo "Monitor system" >>~/options.txt
-echo "Cancel" >>~/options.txt
-
-case $(cat ~/options.txt | fzf --layout=reverse-list --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" System " --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green) in
+case $(echo -e "enter select  esc exit\nManage snapshots\nClean up system\nCachy Hello\nMonitor system" | fzf --info=hidden --header-lines=1 --color=pointer:magenta --color=border:'#1D2021' --footer="System" --color=footer:italic:yellow --header-border=line --footer-border=line) in
 "Manage snapshots")
   urxvtc -e sh -c "sudo btrfs-assistant"
   exit
