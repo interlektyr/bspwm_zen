@@ -45,7 +45,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 urxvtd -q &
 
 touch /tmp/optionsN.txt
-touch /tmp/optionsP.txt
 touch /tmp/options.txt
 
 mkdir /tmp/appcommander/
