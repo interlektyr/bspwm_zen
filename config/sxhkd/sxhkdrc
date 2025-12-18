@@ -126,11 +126,11 @@ super + Delete
 
 # Connections
 super + i
-    urxvtc -g 45x12 -e sh -c "bspwm_network.sh;exit"
+    urxvtc -g 55x11 -e sh -c "bspwm_network.sh;exit"
 
 # System
 super + s
-    urxvtc -g 60x10 -e sh -c "bspwm_system.sh;exit"
+    urxvtc -g 55x10 -e sh -c "bspwm_system.sh;exit"
 
 # List windos mapped on current desktop
 super + ctrl + @space
