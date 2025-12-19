@@ -95,6 +95,7 @@ main() {
       --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% \
       --border-label=" Pepper - helper script for pacman/paru " --footer="$(cat /tmp/pepper_ulist.txt)" \
       --border-label-pos=3 \
+      --preview 'cat {+f}' \
       --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' | xargs -d "\n"
   )
 
