@@ -60,8 +60,6 @@ sync() {
   echo "Syncking pacman repo-lists..."
   sudo pacman -Sy >/dev/null
 
-  echo " enter install  ? show keybindings  esc exit" >/$HOME/.cache/pepper/bspwm_applist.txt
-
   pacman -Sl $(pacman-conf --repo-list) >>/$HOME/.cache/pepper/bspwm_applist.txt
   echo "Syncing pacman repo-lists... done!"
 
@@ -93,19 +91,16 @@ main() {
     touch /tmp/pepper_ulist.txt
   fi
 
-  if [ -f /tmp/pepperlist.txt ]; then
-    rm /tmp/pepperlist.txt
-  fi
+  paru -S $(
+    echo -e " enter install  ? show keybindings  esc exit\n$(cat /$HOME/.cache/pepper/bspwm_applist.txt | awk '{print $1 ": " $2}')" | fzf --footer-border=line --info=hidden --ansi \
+      --bind "ctrl-u:execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
+      --bind "ctrl-a:execute(paru)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
+      --bind "ctrl-p:execute(sudo pacman -Syu)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
+      --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% \
+      --border-label=" Pepper - helper script for pacman/paru " --footer="$(cat /tmp/pepper_ulist.txt)" \
+      --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' | xargs -d "\n"
+  )
 
-  touch /tmp/pepperlist.txt
-
-  cat /$HOME/.cache/pepper/bspwm_applist.txt | fzf --sync --footer-border=line --info=hidden --ansi --bind "ctrl-u:execute(bspwm_pepper.sh -u)+change-footer($(echo -e $(cat /tmp/pepper_ulist.txt)))" --bind "ctrl-a:execute(paru)+execute(bspwm_pepper.sh -u)+change-footer($(echo -e $(cat /tmp/pepper_ulist.txt)))+reload(bspwm_pepper.sh)" --bind "ctrl-p:execute(sudo pacman -Syu)+execute(bspwm_pepper.sh -u)+change-footer($(echo -e $(cat /tmp/pepper_ulist.txt)))" --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% --border-label=" Pepper - helper script for pacman/paru " --footer="$up_line" --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' >/tmp/pepperlist.txt
-
-  for appn in $(cat /tmp/pepperlist.txt); do
-    final+=" $appn"
-  done
-
-  paru -S $final
   appcommander.sh u
 }
 
@@ -116,8 +111,11 @@ case $1 in
 -u)
   update
   ;;
+-nr)
+  main
+  ;;
 *)
-  up_line="Check for updates (ctrl+u)"
+  echo "Check for updates (ctrl+u)" >/tmp/pepper_ulist.txt
   main
   ;;
 esac
