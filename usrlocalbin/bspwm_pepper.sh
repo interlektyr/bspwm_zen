@@ -93,9 +93,11 @@ main() {
       --bind "ctrl-a:execute(paru)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-p:execute(sudo pacman -Syu)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% \
+      --bind "F2:toggle-preview" \
       --border-label=" Pepper - helper script for pacman/paru " --footer="$(cat /tmp/pepper_ulist.txt)" \
       --border-label-pos=3 \
       --preview 'cat {+f}' \
+      --preview-window hidden \
       --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' | xargs -d "\n"
   )
 
