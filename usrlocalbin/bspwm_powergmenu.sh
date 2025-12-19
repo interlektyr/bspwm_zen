@@ -8,7 +8,7 @@ case $(echo -e "enter select  esc exit\nLock\nShutdown\nReload X11\nReboot\nR
   urxvtc -g 45x5 -e sh -c "gum confirm Shutdown? --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && shutdown -h now || exit"
   ;;
 "Reload X11")
-  urxvtc -g 45x5 -e sh -c "gum confirm Reload X11? --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && bspc quit || exit"
+  urxvtc -g 45x5 -e sh -c "gum confirm Reload? --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && bspc quit || exit"
   ;;
 "Reboot")
   urxvtc -g 45x5 -e sh -c "gum confirm --no-show-help --prompt.foreground="#DBBC7F" --selected.background="#D699B6" && systemctl reboot || exit"
