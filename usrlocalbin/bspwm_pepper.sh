@@ -87,10 +87,6 @@ main() {
     sync
   fi
 
-  if [ ! -f /tmp/pepper_ulist.txt ]; then
-    touch /tmp/pepper_ulist.txt
-  fi
-
   paru -S $(
     echo -e " enter install  ? show keybindings  esc exit\n$(cat /$HOME/.cache/pepper/bspwm_applist.txt | awk '{print $1 ": " $2}')" | fzf --footer-border=line --info=hidden --ansi \
       --bind "ctrl-u:execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
@@ -98,6 +94,7 @@ main() {
       --bind "ctrl-p:execute(sudo pacman -Syu)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% \
       --border-label=" Pepper - helper script for pacman/paru " --footer="$(cat /tmp/pepper_ulist.txt)" \
+      --border-label-pos=3 \
       --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' | xargs -d "\n"
   )
 
@@ -115,6 +112,9 @@ case $1 in
   main
   ;;
 *)
+  if [ ! -f /tmp/pepper_ulist.txt ]; then
+    touch /tmp/pepper_ulist.txt
+  fi
   echo "Check for updates (ctrl+u)" >/tmp/pepper_ulist.txt
   main
   ;;
