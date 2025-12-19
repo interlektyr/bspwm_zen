@@ -4,16 +4,6 @@ bspc config remove_disabled_monitors true
 bspc config remove_unplugged_monitors true
 bspc config merge_overlapping_monitors true
 
-#xrandr -q | grep "DP-1-1 connected" && xrandr --output DP-1-1 --primary --mode 2560x1440 --pos 0x0 --rotate normal --output eDP-2 --off
-
-#xrandr -q | grep "DP-1-1 connected" && bspc monitor %DP-1-1 -d 1 2 3 4 5 6 7 8 9
-#xrandr -q | grep "DP-1-1 connected" || bspc monitor -d 1 2 3 4 5 6 7 8 9
-
-#xrandr -q | grep "DP-1-1 connected" && echo "Xft.dpi: 108" | xrdb -override
-#xrandr -q | grep "DP-1-1 connected" || echo "Xft.dpi: 130" | xrdb -override
-
-#xrandr -q | grep "DP-1-1 connected" && touch /tmp/external_m.txt || touch /tmp/internal_m.txt
-
 if [ -z $(xrandr -q | grep "DP-1-1 connected") ]; then
   bspc monitor -d 1 2 3 4 5 6 7 8 9
   echo "Xft.dpi: 130" | xrdb -override
@@ -44,19 +34,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 urxvtd -q &
 
-touch /tmp/optionsN.txt
-touch /tmp/options.txt
-
-mkdir /tmp/appcommander/
-touch /tmp/appcommander/AC_Exec.txt
-touch /tmp/appcommander/AC_Name.txt
-touch /tmp/appcommander/AC_Term.txt
-
-touch /tmp/pepperlist.txt
-
 bspwm_hiddenwinmenu.sh init &
-
-appcommander.sh u &
 
 bspc config border_width 0
 bspc config window_gap 12
