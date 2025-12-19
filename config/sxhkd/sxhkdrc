@@ -122,11 +122,11 @@ super + x
 
 # Power
 super + Delete
-    urxvtc -g 55x10 -e sh -c "bspwm_powergmenu.sh;exit"
+    urxvtc -g 55x11 -e sh -c "bspwm_powergmenu.sh;exit"
 
 # Connections
 super + i
-    urxvtc -g 55x11 -e sh -c "bspwm_network.sh;exit"
+    urxvtc -g 55x12 -e sh -c "bspwm_network.sh;exit"
 
 # System
 super + s
