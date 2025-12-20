@@ -41,7 +41,7 @@ main() {
 
   truncate -s 0 ~/nohup.out
 
-  if [ ! -f /tmp/appcommander/AC_Exec.txt] || [ ! -f /tmp/appcommander/AC_Name.txt] || [ ! -f /tmp/appcommander/AC_Term.txt]; then
+  if [ ! -f /tmp/appcommander/AC_Exec.txt ]; then
     mkdir /tmp/appcommander/
     touch /tmp/appcommander/AC_Exec.txt
     touch /tmp/appcommander/AC_Name.txt
