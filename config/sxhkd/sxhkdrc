@@ -134,15 +134,15 @@ super + s
 
 # List windos mapped on current desktop
 super + ctrl + @space
-    urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh otd;exit"
+    urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh -d;exit"
 
 # List all mapped windows 
 super + ctrl + w 
-   urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh;exit"
+   urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh -a;exit"
 
 # Hidden windows
 super + h
-    urxvtc -g 120x30 -e sh -c "bspwm_hiddenwinmenu.sh;exit"
+    urxvtc -g 120x30 -e sh -c "bspwm_navigator.sh -h;exit"
 
 # Eject mounted drives
 super + ctrl + e
