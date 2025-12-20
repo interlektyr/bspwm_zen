@@ -1,120 +1,107 @@
 #!/bin/bash
 
-init() {
-  touch /tmp/hwlist.txt
-  touch /tmp/hwidlist.txt
-  exit
+desktop() {
+
+  if [ -f /tmp/external_m.txt ]; then
+    cw=$(bspc query -d 'DP-1-1:focused' -D --names)
+  else
+    cw=$(bspc query -D -d focused --names)
+  fi
+
+  seld=$(
+
+    for wid in $(bspc query -N -n .!hidden.window -d $cw); do
+
+      n=$((n + 1))
+
+      if [ $n = 1 ]; then
+        echo "esc quit $mode"
+      else
+        echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
+      fi
+
+    done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
+      --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
+      --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
+      --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
+
+  )
+
+  bspc node $seld -g hidden=off -f
+  bspc node $seld -g sticky=off -f
+
 }
 
-main() {
+hidden() {
 
-  n=0
+  selh=$(
 
-  if [ "$mode" = "vd" ]; then
+    for wid in $(bspc query -N -n .hidden.window); do
 
-    if [ -f /tmp/external_m.txt ]; then
-      cw=$(bspc query -d 'DP-1-1:focused' -D --names)
-    else
-      cw=$(bspc query -D -d focused --names)
-    fi
+      n=$((n + 1))
 
-    mq=$(bspc query -N -n .!hidden.window -d $cw)
-    type="mapped windows on the current desktop"
+      if [ $n = 1 ]; then
+        echo "esc quit $mode"
+      else
+        echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
+      fi
 
-    sel=$(
+    done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
+      --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
+      --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
+      --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
 
-      for wid in $mq; do
+  )
 
-        n=$((n + 1))
+  bspc node $selh -g hidden=off -f
+  bspc node $selh -g sticky=off -f
 
-        if [ $n = 1 ]; then
-          echo "esc quit $mode"
-        else
-          echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
-        fi
+}
 
-      done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
-        --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
-        --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
-        --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
-    )
+all() {
 
-  elif [ "$mode" = "vh" ]; then
-    mq=$(bspc query -N -n .hidden.window)
-    type="unmapped windows"
+  sela=$(
 
-    sel=$(
+    for wid in $(bspc query -N -n .!hidden.window); do
 
-      for wid in $mq; do
+      n=$((n + 1))
 
-        n=$((n + 1))
+      if [ $n = 1 ]; then
+        echo "esc quit $mode"
+      else
+        echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
+      fi
 
-        if [ $n = 1 ]; then
-          echo "esc quit $mode"
-        else
-          echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
-        fi
+    done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
+      --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
+      --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
+      --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
 
-      done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
-        --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
-        --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
-        --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
-    )
+  )
 
-  elif [ "$mode" = "va" ]; then
-    type="mapped windows on all desktops"
-    mq=$(bspc query -N -n .!hidden.window)
+  bspc node $sela -g hidden=off -f
+  bspc node $sela -g sticky=off -f
 
-    sel=$(
-
-      for wid in $mq; do
-
-        n=$((n + 1))
-
-        if [ $n = 1 ]; then
-          echo "esc quit $mode"
-        else
-          echo -e "$(xprop -notype -id $wid WM_NAME | cut -d'"' -f2) | $(xprop -notype -id $wid WM_CLASS | cut -d'"' -f2)\e[1;90m | $wid\e[0m"
-        fi
-
-      done | fzf --ansi --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" \
-        --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% \
-        --border-label=" Navigator ($type) " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' \
-        --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line | cut -d'|' -f3
-    )
-
+  if [ -f /tmp/external_m.txt ]; then
+    nw=$(bspc query -d 'DP-1-1:focused' -D --names)
+  else
+    nw=$(bspc query -D -d focused --names)
   fi
 
-  bspc node $sel -g hidden=off -f
-  bspc node $sel -g sticky=off -f
+  selw=$(sed -n "${nw}p" </tmp/randwall.txt)
+  hsetroot -cover $selw
 
-  if [ "$mode" = "va" ]; then
-
-    if [ -f /tmp/external_m.txt ]; then
-      nw=$(bspc query -d 'DP-1-1:focused' -D --names)
-    else
-      nw=$(bspc query -D -d focused --names)
-    fi
-
-    selw=$(sed -n "${nw}p" </tmp/randwall.txt)
-    hsetroot -cover $selw
-  fi
-
-  exit 0
 }
 
 case $1 in
 -d)
-  mode="vd"
-  main
+  desktop
   ;;
 -h)
-  mode="vh"
-  main
+  hidden
   ;;
 -a)
-  mode="va"
-  main
+  all
   ;;
 *)
   exit 0
