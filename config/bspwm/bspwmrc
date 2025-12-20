@@ -34,8 +34,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 urxvtd -q &
 
-bspwm_hiddenwinmenu.sh init &
-
 bspc config border_width 0
 bspc config window_gap 12
 
