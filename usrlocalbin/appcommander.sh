@@ -1,10 +1,28 @@
 #!/bin/bash
 
+check_tmp() {
+
+  if [ ! -f /tmp/appcommander/AC_Exec.txt ]; then
+    mkdir /tmp/appcommander/
+    touch /tmp/appcommander/AC_Exec.txt
+    touch /tmp/appcommander/AC_Name.txt
+    touch /tmp/appcommander/AC_Term.txt
+    update
+  fi
+
+}
+
 update() {
 
-  truncate -s 0 /tmp/appcommander/AC_Exec.txt
-  truncate -s 0 /tmp/appcommander/AC_Name.txt
-  truncate -s 0 /tmp/appcommander/AC_Term.txt
+  if [ ! -f /tmp/appcommander/AC_Exec.txt ]; then
+    check_tmp
+  else
+
+    truncate -s 0 /tmp/appcommander/AC_Exec.txt
+    truncate -s 0 /tmp/appcommander/AC_Name.txt
+    truncate -s 0 /tmp/appcommander/AC_Term.txt
+
+  fi
 
   echo " enter launch  ctrl-s sync  esc quit" >>/tmp/appcommander/AC_Name.txt
   echo "null" >>/tmp/appcommander/AC_Exec.txt
@@ -41,15 +59,13 @@ main() {
 
   truncate -s 0 ~/nohup.out
 
-  if [ ! -f /tmp/appcommander/AC_Exec.txt ]; then
-    mkdir /tmp/appcommander/
-    touch /tmp/appcommander/AC_Exec.txt
-    touch /tmp/appcommander/AC_Name.txt
-    touch /tmp/appcommander/AC_Term.txt
-    update
-  fi
+  check_tmp
 
-  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --bind "ctrl-s:execute(appcommander.sh u)+become(appcommander.sh)" --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line)
+  v=$(cat /tmp/appcommander/AC_Name.txt | fzf --bind "ctrl-s:execute(appcommander.sh -u)+become(appcommander.sh)" --info=hidden --header-lines=1 --border --padding=5%,0%,0%,0% --border-label=" AppCommander custom launcher script " --border-label-pos=3 --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green --header-border=line --footer-border=line)
+
+  if [ -z "$v" ]; then
+    exit
+  fi
 
   lineNum=$(grep -n "$v" "/tmp/appcommander/AC_Name.txt" | cut -d: -f1)
 
@@ -74,7 +90,7 @@ main() {
 }
 
 case $1 in
-u)
+-u)
   update
   ;;
 *)

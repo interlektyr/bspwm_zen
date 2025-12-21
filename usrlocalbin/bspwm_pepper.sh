@@ -89,7 +89,8 @@ main() {
     sync
   fi
 
-  paru -S $(
+  appval=$(
+
     echo -e " enter install  ? show keybindings  esc exit\n$(cat /$HOME/.cache/pepper/bspwm_applist.txt | awk '{print $1 ": " $2}')" | fzf --footer-border=line --info=hidden --ansi \
       --bind "ctrl-u:execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-a:execute(paru)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
@@ -103,7 +104,15 @@ main() {
       --color=label:italic:yellow --color=border:'#1D2021' --color=pointer:magenta --color=marker:green | awk '{print $2}' | xargs -d "\n"
   )
 
-  appcommander.sh u
+  if [ -n "$appval" ]; then
+    paru -S $appval
+
+    if [ -f /usr/local/bin/appcommander.sh ]; then
+      appcommander.sh -u
+    fi
+
+  fi
+
 }
 
 case $1 in

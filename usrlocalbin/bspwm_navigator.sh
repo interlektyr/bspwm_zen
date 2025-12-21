@@ -1,11 +1,5 @@
 #!/bin/bash
 
-init() {
-  touch /tmp/hwlist.txt
-  touch /tmp/hwidlist.txt
-  exit
-}
-
 main() {
 
   n=0
@@ -26,6 +20,12 @@ main() {
   elif [ "$mode" = "va" ]; then
     type="mapped windows on all desktops"
     mq=$(bspc query -N -n .!hidden.window)
+  fi
+
+  if [ -z "$mq" ]; then
+    echo "Found no windows!"
+    sleep 2
+    exit
   fi
 
   if [ ! -f /tmp/widlist.txt ]; then
@@ -49,11 +49,9 @@ main() {
 
   )
 
-  #if [ $n = 0 ]; then
-  #  echo "Found no windows hidden by user"
-  #  sleep 1
-  #  exit
-  #fi
+  if [ -z "$sel" ]; then
+    exit
+  fi
 
   bspc node $sel -g hidden=off -f
   bspc node $sel -g sticky=off -f
