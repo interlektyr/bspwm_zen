@@ -153,7 +153,7 @@ cp -r dunst gtk-3.0 nvim ranger sxhkd yazi ghostty ~/.config/
 cd ..
 
 cd home/
-cp .xinitrc .Xresources .xsettingsd.conf picom.conf ~/
+cp .xinitrc .Xresources .xsettingsd.conf .xsettingsd_laptopscr.conf picom.conf ~/
 cd ..
 
 cd localshare/icons/
