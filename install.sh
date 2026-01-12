@@ -73,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu ghostty thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # If not CachyOS
 if [ "$CO" = "no" ]; then
@@ -96,7 +96,7 @@ if [ "$ComT" = "ASUS" ]; then
 fi
 
 # install from the aur
-paru -S autojump moonbit tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
+paru -S onlyoffice-bin conky-lua-nv marktext autojump moonbit tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
 
 # check if /$HOME/.config/ exit, if it dosen't create it
 confdir="~/.config/"
@@ -108,15 +108,21 @@ fi
 
 # check if /$HOME/.local/share exit, if it dosen't create it
 confdirb="~/.local/share/"
+confdirc="~/.local/"
+
+if [ ! -d "$confdirc" ]; then
+  mkdir "$confdirc"
+  echo "Creating .local"
+fi
 
 if [ ! -d "$confdirb" ]; then
   mkdir "$confdirb"
-  echo "Creating .local and .local/share"
+  echo "Creating .local/share"
 fi
 
 # clone zen repo and cd into it
-git clone https://github.com/interlektyr/bspwm_zen.git
-cd bspwm_zen
+# git clone https://github.com/interlektyr/bspwm_zen.git
+# cd bspwm_zen
 
 # chmod it up, create directories and copy files
 mkdir ~/.config/bspwm/
@@ -143,7 +149,7 @@ fi
 
 chmod +x ranger/scope.sh
 
-cp -r dunst gtk-3.0 nvim ranger sxhkd ~/.config/
+cp -r dunst gtk-3.0 nvim ranger sxhkd yazi ghostty ~/.config/
 cd ..
 
 cd home/
