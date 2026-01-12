@@ -75,11 +75,13 @@ super + alt + {1-9}
 
 # terminal emulator
 alt + Return
-	urxvtc
+   ghostty --theme="Black Metal (Nile)"
+
+#urxvtc -name URxvtL
 
 # drop down terminal beta
 super + Return 
-    tdrop -w 50% -h 50% -x 25% -y 25% urxvt
+    tdrop -w 50% -h 50% -x 25% -y 25% ghostty
 
 # custom launcher script
 super + @space
@@ -93,7 +95,11 @@ super + z
 
 # ranger
 super + r
-    urxvtc -g 120x35 -e ranger
+  urxvtc -g 120x35 -e ranger
+
+# yazi
+super + y 
+  ghostty -e yazi
 
 # neovide
 super + n 
