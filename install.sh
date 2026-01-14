@@ -73,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu ghostty thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu rio thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # If not CachyOS
 if [ "$CO" = "no" ]; then
@@ -149,7 +149,7 @@ fi
 
 chmod +x ranger/scope.sh
 
-cp -r dunst gtk-3.0 nvim ranger sxhkd yazi ghostty ~/.config/
+cp -r dunst gtk-3.0 nvim ranger sxhkd yazi rio ~/.config/
 cd ..
 
 cd home/
