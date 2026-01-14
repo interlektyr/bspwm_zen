@@ -1,4 +1,4 @@
-#Put the following at the end of cachyos-config.fish
+#Put the following at the end of config.fish
 
 # Start X at login
 if status is-login
