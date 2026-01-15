@@ -1,4 +1,4 @@
-[[manager.prepend_keymap]]
-on   = [ "<C-m>" ]
-run  = "plugin drag"
-desc = "Drag Files"
+[[mgr.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch"
+desc = "Compress with ouch"
