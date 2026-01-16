@@ -85,7 +85,7 @@ main() {
     mkdir /$HOME/.cache/pepper/
     touch /$HOME/.cache/pepper/bspwm_applist.txt
     touch /$HOME/.cache/pepper/pepper_readme.md
-    echo -e "tab                 multiselect\nF2                  toggle preview of selected pkgs\nenter               install\nctrl-s              sync local pkg-list\nctrl-u              check for updates\nctrl-p              install updates (arch-update)\nctrl-a              install updates (pacman + aur)\nctrl-m              update mirror list (cachyos-rate-mirrors)" >/$HOME/.cache/pepper/pepper_readme.md
+    echo -e "tab                 multiselect\nF2                  toggle preview of selected pkgs\nenter               install\nctrl-s              sync local pkg-list\nctrl-u              check for updates\nctrl-p              install updates (arch-update)\nctrl-a              install updates (pacman + aur)" >/$HOME/.cache/pepper/pepper_readme.md
     sync
   fi
 
@@ -95,7 +95,6 @@ main() {
       --bind "ctrl-u:execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-a:execute(paru)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-p:execute(arch-update)+execute(bspwm_pepper.sh -u)+become(bspwm_pepper.sh -nr)" \
-      --bind "ctrl-m:execute(sudo cachyos-rate-mirrors)+become(bspwm_pepper.sh -nr)" \
       --bind "ctrl-s:execute(bspwm_pepper.sh -s)" --multi --header-lines=1 --header-border=line --border --padding=5%,0%,0%,0% \
       --bind "F2:toggle-preview" \
       --border-label=" Pepper - helper script for pacman/paru " --footer="$(cat /tmp/pepper_ulist.txt)" \
