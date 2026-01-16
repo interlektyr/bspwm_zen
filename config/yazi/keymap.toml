@@ -2,3 +2,7 @@
 on = ["C"]
 run = "plugin ouch"
 desc = "Compress with ouch"
+
+[[mgr.prepend_keymap]]
+on  = "<C-n>"
+run = "shell -- dragon-drop -x -i -T %h"
