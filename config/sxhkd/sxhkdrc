@@ -75,13 +75,13 @@ super + alt + {1-9}
 
 # terminal emulator
 alt + Return
-   rio 
+   wezterm 
 
 #urxvtc -name URxvtL
 
 # drop down terminal beta
 super + Return 
-    tdrop -w 50% -h 50% -x 25% -y 25% rio
+    tdrop -w 50% -h 50% -x 25% -y 25% wezterm
 
 # custom launcher script
 super + @space
@@ -99,7 +99,9 @@ super + r
 
 # yazi
 super + y 
-  rio -e yazi
+  xdotool search --onlyvisible --classname wez_yazi windowunmap \
+    || xdotool search --classname wez_yazi windowmap \
+    || wezterm start --class wez_yazi yazi;xdotool search --onlyvisible --classname wez_yazi windowunmap;yazi
 
 # neovide
 super + n 
