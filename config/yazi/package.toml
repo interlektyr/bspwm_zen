@@ -1,9 +1,0 @@
-[[plugin.deps]]
-use = "ndtoan96/ouch"
-rev = "594b8a2"
-hash = "c9e628fc0312d198db22ae2fa74883b"
-
-[[flavor.deps]]
-use = "Chromium-3-Oxide/everforest-medium"
-rev = "0158f0f"
-hash = "a7c36abf0b13289aceb1c20a17c6a63e"
