@@ -73,10 +73,12 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu ouch rio thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu trash-cli wezterm ouch rio thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # install plugin for yazi
 ya pkg add ndtoan96/ouch
+ya pkg add stelcodes/bunny
+ya pkg add uhs-robert/recycle-bin
 
 # If not CachyOS
 if [ "$CO" = "no" ]; then
