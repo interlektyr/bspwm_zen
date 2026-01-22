@@ -1,14 +1,14 @@
-BSPWM_zen
+# BSPWM_zen
 
-## Setting up the firewall
+# Setting up the firewall
 
 Text goes here
 
-## Configuring "zen-mode" Firefox
+# Configuring "zen-mode" Firefox
 
 1. Install Firefox
   
-2. Patch it with [Textfox]([GitHub - adriankarlen/textfox: firefox theme for the tui enthusiast](https://github.com/adriankarlen/textfox))
+2. Patch it with [Textfox](https://github.com/adriankarlen/textfox)
   
 3. Set a coloscheme such as [Minimalist Everforest](https://addons.mozilla.org/sv-SE/firefox/addon/minimalist-everforest/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
   
