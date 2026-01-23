@@ -38,7 +38,7 @@ paru -S spicetify-cli
   
 
 ```
-curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh`
+curl -fsSL https://raw.githubusercontent.com/spicetify/marketplace/main/resources/install.sh | sh
 ```
 
 5. Download themes
