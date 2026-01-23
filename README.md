@@ -79,6 +79,13 @@ spicetify config color_scheme RosePineDawn
 spicetify apply
 ```
   
+10. Install spotify-control
+
+
+...
+paru -S spotify-control
+...
+
 
 Setting up
 
