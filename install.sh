@@ -73,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu trash-cli wezterm ouch rio thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu trash-cli kitty ouch thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # install plugin for yazi
 ya pkg add ndtoan96/ouch
@@ -154,11 +154,11 @@ fi
 
 chmod +x ranger/scope.sh
 
-cp -r dunst gtk-3.0 nvim ranger sxhkd yazi rio ~/.config/
+cp -r dunst gtk-3.0 nvim sxhkd yazi kitty ~/.config/
 cd ..
 
 cd home/
-cp .xinitrc .Xresources .xsettingsd.conf .xsettingsd_laptopscr.conf picom.conf .wezterm.lua ~/
+cp .xinitrc .Xresources .xsettingsd.conf .xsettingsd_laptopscr.conf picom.conf ~/
 cd ..
 
 cd localshare/icons/
@@ -169,8 +169,8 @@ cd ..
 cd ..
 
 cd usrlocalbin/
-chmod +x appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh
-sudo cp appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh /usr/local/bin/
+chmod +x fzf_appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh
+sudo cp fzf_appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh /usr/local/bin/
 
 if [ "$ComT" = "ASUS" ] || [ "$ComT" = "L" ]; then
   sudo cp bar_bat.sh bar_batdeamon.sh /usr/local/bin/
