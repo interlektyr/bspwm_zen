@@ -75,19 +75,19 @@ super + alt + {1-9}
 
 # terminal emulator
 alt + Return
-   wezterm 
+   kitty 
 
 #urxvtc -name URxvtL
 
 # drop down terminal beta
 super + Return 
-    tdrop -w 50% -h 50% -x 25% -y 25% wezterm
+    tdrop -w 50% -h 50% -x 25% -y 25% kitty
 
 # custom launcher script
 super + @space
   xdotool search --onlyvisible --classname URxvtAppC windowunmap \
     || xdotool search --classname URxvtAppc windowmap \
-    || urxvtc -name URxvtAppc -e sh -c "appcommander.sh;xdotool search --onlyvisible --classname URxvtAppC windowunmap;appcommander.sh"
+    || urxvtc -name URxvtAppc -e sh -c "fzf_appcommander.sh;xdotool search --onlyvisible --classname URxvtAppC windowunmap;appcommander.sh"
 
 # zen-browser
 super + z
@@ -99,9 +99,9 @@ super + r
 
 # yazi
 super + y 
-  xdotool search --onlyvisible --classname wez_yazi windowunmap \
-    || xdotool search --classname wez_yazi windowmap \
-    || wezterm start --class wez_yazi yazi;xdotool search --onlyvisible --classname wez_yazi windowunmap;yazi
+  xdotool search --onlyvisible --classname kitty_yazi windowunmap \
+    || xdotool search --classname kitty_yazi windowmap \
+    || kitty --override initial_window_width=1800 --override initial_window_height=1200 --name kitty_yazi yazi;xdotool search --onlyvisible --classname kitty_yazi windowunmap;yazi
 
 # neovide
 super + n 
