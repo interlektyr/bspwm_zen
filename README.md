@@ -1,10 +1,10 @@
 # BSPWM_zen
 
-# Setting up the firewall
+## Setting up the firewall
 
 Text goes here
 
-# Configuring "zen-mode" Firefox
+## Configuring "zen-mode" Firefox
 
 1. Install Firefox
   
@@ -16,7 +16,7 @@ Text goes here
   
 5. Install [Auto Fullscreen](https://addons.mozilla.org/sv-SE/firefox/addon/autofullscreen/?utm_source=addons.mozilla.org&utm_medium=referral&utm_content=search)
 
-## Setting up spotify
+## Setting up Spotify
 
 1. Install spotify-launcher
   
