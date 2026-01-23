@@ -1,10 +1,10 @@
 # BSPWM_zen
 
-## Setting up the firewall
+## Setting up the firewall
 
 Text goes here
 
-## Configuring "zen-mode" Firefox
+## Configuring "zen-mode" Firefox
 
 1. Install Firefox
   
