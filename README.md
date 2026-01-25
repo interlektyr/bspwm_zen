@@ -44,6 +44,21 @@ sudo mkdir getty@tty1.service.d
 sudo cp autologin.conf /etc/systemd/system/getty@tty1.service.d
 ```
 
+4. open `config.fish` under `/$HOME/.config/fish/` and paste the following:
+
+```
+function fish_greeting
+    # smth smth
+end
+
+# Start X at login
+if status is-login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty &>/dev/null
+    end
+end
+```
+
 ## Configuring "zen-mode" Firefox
 
 1. Install Firefox
