@@ -58,6 +58,40 @@ if status is-login
     end
 end
 ```
+This will start X at login and disable fish-greeting when opening the terminal
+
+## Configuring slock
+
+1. Clone slock and cd into it
+
+```
+git clone https://git.suckless.org/slock
+```
+
+```
+cd slock
+```
+
+2. Download image-patch and apply it
+
+```
+wget https://tools.suckless.org/slock/patches/background-image/slock-background-image-20220318-1c5a538.diff
+```
+
+```
+git apply slock-background-image-20220318-1c5a538.diff
+```
+
+3. Open `config.h`, change user from nobody to your username and set image with path
+4. Install
+
+```
+make
+```
+
+```
+sudo make install
+```
 
 ## Configuring "zen-mode" Firefox
 
