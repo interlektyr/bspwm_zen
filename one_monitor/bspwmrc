@@ -20,17 +20,6 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 
 urxvtd -q &
 
-touch /tmp/optionsN.txt
-touch /tmp/optionsP.txt
-touch /tmp/options.txt
-
-mkdir /tmp/appcommander/
-touch /tmp/appcommander/AC_Exec.txt
-touch /tmp/appcommander/AC_Name.txt
-touch /tmp/appcommander/AC_Term.txt
-
-bspwm_hiddenwinmenu.sh init &
-
 bspc config border_width 0
 bspc config window_gap 12
 
