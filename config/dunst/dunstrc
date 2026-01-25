@@ -50,23 +50,25 @@ mouse_right_click = close_all
 title = Dunst
 class = Dunst
 
+[global]
+background = "#2b3438"
+foreground = "#f8f9e8"
+frame_color = "#f3c0e5"
+
 [urgency_low]
-timeout = 2
-background = "#eff1f5"
-foreground = "#373b41"
-frame_color = "#373b41"
+background = "#2b3438"
+foreground = "#839e9a"
+frame_color = "#839e9a"
 
 [urgency_normal]
-timeout = 5
-background = "#eff1f5"
-foreground = "#373b41"
-frame_color = "#373b41"
+background = "#2b3438"
+foreground = "#f8f9e8"
+frame_color = "#f3c0e5"
 
 [urgency_critical]
-timeout = 0
-background = "#E67E80"
-foreground = "#1d2021"
-frame_color = "#1d2021"
+background = "#2b3438"
+foreground = "#f8f9e8"
+frame_color = "#f57f82"
 
 # Every section that isn't one of the above is interpreted as a rules to
 # override settings for certain messages.
