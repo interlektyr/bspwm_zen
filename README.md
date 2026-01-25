@@ -28,7 +28,7 @@ Follow the specific guidelines
 
 ## Enable autologin
 
-1. Create the directory getty@tty1.service.d under /etc/systemd/system
+1. Create the directory `getty@tty1.service.d` `under /etc/systemd/system`
 
 ```
 cd /etc/systemd/system/
