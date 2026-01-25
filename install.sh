@@ -73,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu trash-cli kitty ouch thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu hunspell trash-cli kitty ouch thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # install plugin for yazi
 ya pkg add ndtoan96/ouch
@@ -101,7 +101,7 @@ if [ "$ComT" = "ASUS" ]; then
 fi
 
 # install from the aur
-paru -S launch-cmd dragon-drop onlyoffice-bin conky-lua-nv marktext autojump moonbit tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
+paru -S hunspell-sv launch-cmd dragon-drop onlyoffice-bin conky-lua-nv marktext autojump moonbit tdrop-git rxvt-unicode-truecolor-wide-glyphs lemonbar-xft-git tomb tufw-bin bluetuith tremc mullvad-vpn-bin zen-browser-bin librewolf-bin aurutils
 
 # check if /$HOME/.config/ exit, if it dosen't create it
 confdir="~/.config/"
