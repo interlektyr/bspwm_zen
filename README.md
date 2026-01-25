@@ -28,7 +28,21 @@ Follow the specific guidelines
 
 ## Enable autologin
 
-1. 
+1. Create the directory getty@tty1.service.d under /etc/systemd/system
+
+```
+cd /etc/systemd/system/
+```
+
+```
+sudo mkdir getty@tty1.service.d
+```
+2. Open `autologin.conf` and change USERNAME to your username 
+3. Move `autologin.conf` to `getty@tty1.service.d`
+
+```
+sudo cp autologin.conf /etc/systemd/system/getty@tty1.service.d
+```
 
 ## Configuring "zen-mode" Firefox
 
