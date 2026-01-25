@@ -1,5 +1,14 @@
 # BSPWM_zen
 
+## Install the CachyOS
+
+Choose No Desktop
+
+## Apply basic config
+
+1. clone this repo
+2. run the install-scrip
+
 ## Setting up the firewall
 
 1. Open tui-interface for ufw and start the firewall
@@ -12,6 +21,14 @@ sudo ufw default deny
 ```
 sudo ufw allow from 192.168.0.0/24
 ```
+
+## Configuring VPN
+
+Follow the specific guidelines
+
+## Enable autologin
+
+1. 
 
 ## Configuring "zen-mode" Firefox
 
