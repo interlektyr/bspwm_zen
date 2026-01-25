@@ -2,7 +2,18 @@
 
 ## Setting up the firewall
 
-Text goes here
+1. Open tui-interface for ufw and start the firewall
+2. Apply rules
+
+# ufw default deny
+
+```
+sudo ufw default deny
+```
+
+```
+ufw allow from 192.168.0.0/24
+```
 
 ## Configuring "zen-mode" Firefox
 
