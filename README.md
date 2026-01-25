@@ -22,6 +22,8 @@ sudo ufw default deny
 sudo ufw allow from 192.168.0.0/24
 ```
 
+3. Apply rules for ports if needed
+
 ## Configuring VPN
 
 Follow the specific guidelines
