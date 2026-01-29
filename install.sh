@@ -73,7 +73,7 @@ case $nc in
 esac
 
 # install dependencies
-sudo pacman -Syu --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick xorg-server xorg-xinit hunspell trash-cli kitty ouch thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
+sudo pacman -Syu --needed nsxiv yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg imagemagick xorg-server xorg-xinit hunspell trash-cli kitty ouch thunar xarchiver thunar-archive-plugin w3m gum ranger ntfs-3g gvfs firefox dex xorg-xsetroot xsel wireless_tools git xdo bspwm sxhkd hsetroot xsettingsd picom dunst xed udisks2 udiskie pacman-contrib xorg-xrandr pamixer transmission-cli nvim neovide lsof
 
 # install plugin for yazi
 ya pkg add ndtoan96/ouch
