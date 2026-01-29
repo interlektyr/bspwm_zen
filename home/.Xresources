@@ -9,6 +9,11 @@ Xft.hintstyle:	hintsfull
 
 Xcursor.theme: Oxygen_White
 
+Nsxiv.bar.font: DepartureMono Nerd Font
+Nsxiv.bar.background: #1e2528
+Nsxiv.bar.foreground: #f3c0e5
+Nsxiv.window.background: #1e2528
+
 URxvt.font: xft:DepartureMono Nerd Font:style=Regular:antialias=true:size=11:minspace=False
 URxvt.boldFont: xft:DepartureMono Nerd Font:style=Bold:antialias=true:size=11:minspace=False
 
