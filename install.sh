@@ -169,8 +169,8 @@ cd ..
 cd ..
 
 cd usrlocalbin/
-chmod +x dawn_hunspell.sh fzf_appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh
-sudo cp dawn_hunspell.sh fzf_appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh /usr/local/bin/
+chmod +x dawn_hunspell.sh appcommander.sh bar_bat.sh bar_batdeamon.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh
+sudo cp dawn_hunspell.sh appcommander.sh bar_clock.sh bar_desk.sh bar_vol.sh bspwm_hiddenwinmenu.sh bspwm_network.sh bspwm_powergmenu.sh bspwm_randwall.sh bspwm_system.sh bspwm_workspaces.sh bspwm_eject.sh bspwm_navigator.sh bspwm_layouts.sh bspwm_pepper.sh /usr/local/bin/
 
 if [ "$ComT" = "ASUS" ] || [ "$ComT" = "L" ]; then
   sudo cp bar_bat.sh bar_batdeamon.sh /usr/local/bin/
