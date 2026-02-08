@@ -87,7 +87,7 @@ super + Return
 super + @space
   xdotool search --onlyvisible --classname URxvtAppC windowunmap \
     || xdotool search --classname URxvtAppc windowmap \
-    || urxvtc -name URxvtAppc -e sh -c "fzf_appcommander.sh;xdotool search --onlyvisible --classname URxvtAppC windowunmap;appcommander.sh"
+    || urxvtc -name URxvtAppc -e sh -c "appcommander.sh;xdotool search --onlyvisible --classname URxvtAppC windowunmap;appcommander.sh"
 
 # zen-browser
 super + z
