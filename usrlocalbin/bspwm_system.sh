@@ -14,7 +14,7 @@ case $(echo -e "enter select  esc exit\nManage snapshots\nClean up system\nCa
   exit
   ;;
 "Monitor system")
-  urxvtc -g 120x35 -e sh -c "btop"
+  kitty btm
   exit
   ;;
 *)
